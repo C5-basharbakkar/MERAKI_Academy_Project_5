@@ -4,7 +4,8 @@ import { setMeals } from "../../redux/reducers/meals/index"
 import {useSelector,useDispatch} from "react-redux"
 
 const AllMenue=(req,res)=>{
-/*     const [meal,setMeal]=useState(``)
+   const [page,setPage]=useState()
+    /*     const [meal,setMeal]=useState(``)
  */    const [message,setMessage]=useState(``)
     const dispatch=useDispatch()
      const{meals}=useSelector((state)=>{
@@ -16,12 +17,12 @@ const AllMenue=(req,res)=>{
    
     useEffect(() => {
        
-        axios.get("http://localhost:5000/meals/paginated?p=1").then((result)=>{
+        axios.get(`http://localhost:5000/meals/paginated?p=${page}`).then((result)=>{
             dispatch(setMeals(result.data.products))
         }).catch((err)=>{
              setMessage(err.sqlMessage)
         })
-    }, []);
+    }, [page]);
 
     
     return (
@@ -38,6 +39,8 @@ const AllMenue=(req,res)=>{
                     </>
                 )
             })}
+
+           
 
         </div>
     )
