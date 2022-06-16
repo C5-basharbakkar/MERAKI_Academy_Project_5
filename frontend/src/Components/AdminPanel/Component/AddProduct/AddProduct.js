@@ -119,7 +119,6 @@ const NewProduct=()=> {
         </div>
       </div>
       < div className="cchart">
-        <ChartBar/>
       </div>
     </div>
   );
